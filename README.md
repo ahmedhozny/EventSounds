@@ -10,9 +10,13 @@ A Pocketmine-MP plugin which plays a sound when calling an event.
 A configration file (config.yml) and a helpful file with the available ids (Until now) will be created automatically when your server enables the plugin. Default settings will be used unless you change them in config.yml
 
 To change event sound: 
+
  1- Open `config.yml` and find the name of the event you want to change sound for.
+ 
  2- Change the ID in front of the event by another ID (You can look for the sound you want in SoundIDs.txt).
+ 
  3- Save, and reload or restart the server for the changes to take effect.
+ 
 Note that: Deleting an event will not make any sense.If you want to sounds in any event, insert value 0 infront of it.
 
 ## Contribution:
