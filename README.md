@@ -3,6 +3,8 @@
     <img src="icon.png" width="100px" height="100px">
 </p>
 
+[![](https://poggit.pmmp.io/shield.state/EventSounds)](https://poggit.pmmp.io/p/EventSounds)
+[![](https://poggit.pmmp.io/shield.api/EventSounds)](https://poggit.pmmp.io/p/EventSounds)
 ## Description
 A Pocketmine-MP plugin which plays a sound when calling an event.
 
