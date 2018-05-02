@@ -5,6 +5,10 @@
 
 [![](https://poggit.pmmp.io/shield.state/EventSounds)](https://poggit.pmmp.io/p/EventSounds)
 [![](https://poggit.pmmp.io/shield.api/EventSounds)](https://poggit.pmmp.io/p/EventSounds)
+
+[![](https://poggit.pmmp.io/shield.dl.total/EventSounds)](https://poggit.pmmp.io/p/EventSounds)
+[![](https://poggit.pmmp.io/shield.dl/EventSounds)](https://poggit.pmmp.io/p/EventSounds)
+
 ## Description
 A Pocketmine-MP plugin which plays a sound when calling an event.
 
