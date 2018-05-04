@@ -9,39 +9,45 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerGameModeChangeEvent;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerChangeSkinEvent;
+use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerTransferEvent;
 
 class EventListener implements Listener{
 	
 	private $plugin;
 	
-	private $sounds;
-
 	public function __construct(EventSounds $plugin){
 		$this->plugin = $plugin;
 	}
 	
-	public function onJoin(PlayerJoinEvent $ev){
-		$p = $ev->getPlayer();
-		$cfg = $this->plugin->Config()->get("JoinEvent");
-		$this->plugin->Manager($this->plugin->getSound()->soundsListener($cfg), $p);
+	public function LoginEvent(PlayerLoginEvent $ev){
+		$this->plugin->Manager($ev->getPlayer());
+	}
+
+	public function JoinEvent(PlayerJoinEvent $ev){
+		$this->plugin->Manager($ev->getPlayer());
 	}
 	
-	public function onChat(PlayerChatEvent $ev){
-		$p = $ev->getPlayer();
-		$cfg = $this->plugin->Config()->get("ChatEvent");
-		$this->plugin->Manager($this->plugin->getSound()->soundsListener($cfg), $p);
+	public function ChatEvent(PlayerChatEvent $ev){
+		$this->plugin->Manager($ev->getPlayer());
 	}
 	
-	public function onDeath(PlayerDeathEvent $ev){
-		$p = $ev->getPlayer();
-		$cfg = $this->plugin->Config()->get("DeathEvent");
-		$this->plugin->Manager($this->plugin->getSound()->soundsListener($cfg), $p);
+	public function DeathEvent(PlayerDeathEvent $ev){
+		$this->plugin->Manager($ev->getPlayer());
 	}
 	
-	public function onQuit(PlayerQuitEvent $ev){
-		$p = $ev->getPlayer();
-		$cfg = $this->plugin->Config()->get("QuitEvent");
-		$this->plugin->Manager($this->plugin->getSound()->soundsListener($cfg), $p);
+	public function QuitEvent(PlayerQuitEvent $ev){
+		$this->plugin->Manager($ev->getPlayer());
 	}
+	
+	Public function GamemodeEvent(PlayerGameModeChangeEvent $ev){
+		$this->plugin->Manager($ev->getPlayer());
+	}
+	
+	public function TransferEvent(PlayerTransferEvent $ev){
+		$this->plugin->Manager($ev->getPlayer());
+	}
+	
 }
 

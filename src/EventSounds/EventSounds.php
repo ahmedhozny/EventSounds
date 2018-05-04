@@ -30,14 +30,16 @@ class EventSounds extends PluginBase{
 	public function getSound(){
 		return new Sounds();
 	}
-	
-	public function Manager($sound, Player $player){
+
+	public function Manager(Player $player){
+		$id = $this->Config()->get(debug_backtrace()[1]['function']);
+		$sound = $this->getSound()->soundsListener($id);
 		if($sound == "0"){
 			return true;
 		}
 		
 		$level = $player->getLevel();
-		foreach ($player->getLevel()->getPlayers() as $pos){
+		foreach ($level->getPlayers() as $pos){
 			$level->broadcastLevelEvent($pos, $sound);
 		}
 	}
