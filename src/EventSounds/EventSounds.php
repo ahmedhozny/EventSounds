@@ -9,20 +9,20 @@ use EventSounds\EventListener;
 use EventSounds\Sounds;
 
 class EventSounds extends PluginBase{
-	 
+	
 	public function onEnable(){
 		if(!file_exists($this->getDataFolder(). "config.yml")){
 			$this->getLogger()->notice("Config.yml file was created successfully.");
 			$this->getLogger()->notice("Please make your own edits in config.yml");
 		}
+		//TODO: Check and compare between versions,because new features will be added soon.
+		
 		@mkdir($this->getDataFolder());
 		$this->saveDefaultConfig();
 		$this->saveResource("soundsIDs.txt");
-		$this->Config()->save();
-		
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 	}
-
+	
 	public function Config(){
 		return $this->getConfig();
 	}
@@ -31,10 +31,12 @@ class EventSounds extends PluginBase{
 		return new Sounds();
 	}
 
-	public function Manager(Player $player){
-		$id = $this->Config()->get(debug_backtrace()[1]['function']);
-		$sound = $this->getSound()->soundsListener($id);
-		if($sound == "0"){
+	/*
+	 * Recieves information from config depending on the caller and distributes the sound.
+	 */
+	public function Manager($evname, Player $player){
+		$sound = $this->getSound()->soundsListener($this->Config()->get($evname));
+		if($sound == 0){
 			return true;
 		}
 		
@@ -43,6 +45,4 @@ class EventSounds extends PluginBase{
 			$level->broadcastLevelEvent($pos, $sound);
 		}
 	}
-
 }
-

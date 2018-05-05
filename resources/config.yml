@@ -1,6 +1,10 @@
 ---
-#Here you should add, edit or remove sounds for each event.
-#Adding or removing events doesn't make any sense.If you want to disable sounds for any event, Set its value to 0
+#Please don't make any changes in ConfigVersion
+ConfigVersion: 1
+
+#Here you should edit the sound played for each event.Open soundsIDs.txt for all the available ids
+#You should not remove any events as this will run the default sound.
+#If you want to disable sounds for any event, Set its value to 0
 
 LoginEvent: 11
 JoinEvent: 2

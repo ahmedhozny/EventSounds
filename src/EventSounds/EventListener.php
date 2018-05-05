@@ -20,33 +20,32 @@ class EventListener implements Listener{
 		$this->plugin = $plugin;
 	}
 	
-	public function LoginEvent(PlayerLoginEvent $ev){
-		$this->plugin->Manager($ev->getPlayer());
+	public function onLogin(PlayerLoginEvent $ev){
+		$this->plugin->Manager("LoginEvent", $ev->getPlayer());
 	}
 
-	public function JoinEvent(PlayerJoinEvent $ev){
-		$this->plugin->Manager($ev->getPlayer());
+	public function onJoin(PlayerJoinEvent $ev){
+		$this->plugin->Manager("JoinEvent", $ev->getPlayer());
 	}
 	
-	public function ChatEvent(PlayerChatEvent $ev){
-		$this->plugin->Manager($ev->getPlayer());
+	public function onChat(PlayerChatEvent $ev){
+		$this->plugin->Manager("ChatEvent", $ev->getPlayer());
 	}
 	
-	public function DeathEvent(PlayerDeathEvent $ev){
-		$this->plugin->Manager($ev->getPlayer());
+	public function onDeath(PlayerDeathEvent $ev){
+		$this->plugin->Manager("DeathEvent", $ev->getPlayer());
 	}
 	
-	public function QuitEvent(PlayerQuitEvent $ev){
-		$this->plugin->Manager($ev->getPlayer());
+	public function onQuit(PlayerQuitEvent $ev){
+		$this->plugin->Manager("QuitEvent", $ev->getPlayer());
 	}
 	
-	Public function GamemodeEvent(PlayerGameModeChangeEvent $ev){
-		$this->plugin->Manager($ev->getPlayer());
+	Public function onGamemodeChange(PlayerGameModeChangeEvent $ev){
+		$this->plugin->Manager("GamemodeEvent", $ev->getPlayer());
 	}
 	
-	public function TransferEvent(PlayerTransferEvent $ev){
-		$this->plugin->Manager($ev->getPlayer());
+	public function onTransfer(PlayerTransferEvent $ev){
+		$this->plugin->Manager("TransferEvent", $ev->getPlayer());
 	}
 	
 }
-
