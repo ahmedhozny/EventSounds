@@ -1,14 +1,38 @@
 <?php
 
+/*
+ *  _______     _______ _   _ _____ ____   ___  _   _ _   _ ____  ____
+ * | ____\ \   / / ____| \ | |_   _/ ___| / _ \| | | | \ | |  _ \/ ___|
+ * |  _|  \ \ / /|  _| |  \| | | | \___ \| | | | | | |  \| | | | \___ \
+ * | |___  \ - / | |___| |\  | | |  ___) | |_| | |_| | |\  | |_| |___) |
+ * |_____|  \_/  |_____|_| \_| |_| |____/ \___/ \___/|_| \_|____/|____/
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * link: https://github.com/killer549/EventSounds
+*/
+
 namespace EventSounds;
 
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
 
 class Sounds{
-	
-	public function soundsListener($sound){
-		if($sound == "0") return false;
-		elseif($sound == "1") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_BREAK;
+
+	public $sound = null;
+
+	public function __construct(int $sound){
+		$this->soundsListener($sound);
+	}
+
+	/**
+	 * @param int $sound
+	 * @return int
+	 */
+	private function soundsListener(int $sound): int{
+		if($sound == "1") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_BREAK;
 		elseif($sound == "2") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_FALL;
 		elseif($sound == "3") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_USE;
 		elseif($sound == "4") $sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_BREAK;
@@ -37,12 +61,7 @@ class Sounds{
 		elseif($sound == "27") $sound = LevelEventPacket::EVENT_SOUND_PORTAL;
 		elseif($sound == "28") $sound = LevelEventPacket::EVENT_SOUND_SHOOT;
 		elseif($sound == "29") $sound = LevelEventPacket::EVENT_SOUND_TOTEM;
-		else{
-			$sound = "0";
-			return false;
-		}
-		
-		return $sound;
+		return $this->sound = $sound;
 	}
 } 
 

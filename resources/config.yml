@@ -1,15 +1,31 @@
----
-#Please don't make any changes in ConfigVersion
-ConfigVersion: 1
+#Don't make any changes in configVersion
+configVersion: 2
 
-#Here you should edit the sound played for each event.Open soundsIDs.txt for all the available ids
-#You should not remove any events as this will run the default sound.
-#If you want to disable sounds for any event, Set its value to 0
+#Allow EventSounds to detect other plugins event.
+enableExternalEvents: false
 
-LoginEvent: 11
-JoinEvent: 2
-QuitEvent: 2
-ChatEvent: 10
-DeathEvent: 17
-GamemodeEvent: 3
-TransferEvent: 19
+#Here you can edit the sound ID and who can hear it for each event.
+#Sounds IDs can be found in soundsIDs.txt .
+#At the hearby : 1 = player who called the event. 2 = Everyone except the player. 3 = Everyone in the world.
+
+LoginEvent:
+    sound: 0
+    hearby: 3
+JoinEvent:
+    sound: 2
+    hearby: 3
+QuitEvent:
+    sound: 2
+    hearby: 3
+ChatEvent:
+    sound: 10
+    hearby: 2
+DeathEvent:
+    sound: 17
+    hearby: 3
+GamemodeEvent:
+    sound: 3
+    hearby: 2
+TransferEvent:
+    sound: 19
+    hearby: 2
