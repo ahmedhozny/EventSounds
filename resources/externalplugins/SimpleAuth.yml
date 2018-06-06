@@ -1,0 +1,15 @@
+#Don't change the version as it is used internally
+version: 1
+
+PlayerAuthenticateEvent:
+  sound: 0
+  heardby: 3
+PlayerDeauthenticateEvent:
+  sound: 0
+  heardby: 3
+PlayerRegisterEvent:
+  sound: 0
+  heardby: 3
+PlayerUnregisterEvent:
+  sound: 0
+  heardby: 3

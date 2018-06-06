@@ -1,0 +1,18 @@
+#Don't change the version as it is used internally
+version: 1
+
+AddMoneyEvent:
+  sound: 0
+  heardby: 1
+MoneyChangedEvent:
+  sound: 0
+  heardby: 1
+PayMoneyEvent:
+  sound: 0
+  heardby: 1
+ReduceMoneyEvent:
+  sound: 0
+  heardby: 1
+SetMoneyEvent:
+  sound: 0
+  heardby: 1

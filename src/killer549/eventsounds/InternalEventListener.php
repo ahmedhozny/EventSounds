@@ -15,7 +15,9 @@
  * link: https://github.com/killer549/EventSounds
 */
 
-namespace EventSounds;
+declare(strict_types = 1);
+
+namespace killer549\eventsounds;
 
 use pocketmine\event\Listener;
 
@@ -27,40 +29,40 @@ use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerTransferEvent;
 
-class EventListener implements Listener{
+class InternalEventListener implements Listener{
 	
-	private $plugin;
+	private $core;
 	
-	public function __construct(EventSounds $plugin){
-		$this->plugin = $plugin;
+	public function __construct(EventSounds $core){
+		$this->core = $core;
 	}
 	
 	public function onLogin(PlayerLoginEvent $ev){
-		$this->plugin->Manager("LoginEvent", $ev->getPlayer());
+		$this->core->Manager("LoginEvent", $ev->getPlayer());
 	}
 
 	public function onJoin(PlayerJoinEvent $ev){
-		$this->plugin->Manager("JoinEvent", $ev->getPlayer());
+		$this->core->Manager("JoinEvent", $ev->getPlayer());
 	}
 	
 	public function onChat(PlayerChatEvent $ev){
-		$this->plugin->Manager("ChatEvent", $ev->getPlayer());
+		$this->core->Manager("ChatEvent", $ev->getPlayer());
 	}
 	
 	public function onDeath(PlayerDeathEvent $ev){
-		$this->plugin->Manager("DeathEvent", $ev->getPlayer());
+		$this->core->Manager("DeathEvent", $ev->getPlayer());
 	}
 	
 	public function onQuit(PlayerQuitEvent $ev){
-		$this->plugin->Manager("QuitEvent", $ev->getPlayer());
+		$this->core->Manager("QuitEvent", $ev->getPlayer());
 	}
 	
-	Public function onGamemodeChange(PlayerGameModeChangeEvent $ev){
-		$this->plugin->Manager("GamemodeEvent", $ev->getPlayer());
+	public function onGamemodeChange(PlayerGameModeChangeEvent $ev){
+		$this->core->Manager("GamemodeEvent", $ev->getPlayer());
 	}
 	
 	public function onTransfer(PlayerTransferEvent $ev){
-		$this->plugin->Manager("TransferEvent", $ev->getPlayer());
+		$this->core->Manager("TransferEvent", $ev->getPlayer());
 	}
 	
 }

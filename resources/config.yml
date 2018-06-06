@@ -1,31 +1,35 @@
 #Don't make any changes in configVersion
 configVersion: 2
 
-#Allow EventSounds to detect other plugins event.
-enableExternalEvents: false
+#External plugin events are the events called or registered by other plugins
+#Please visit https://github.com/killer549/EventSounds/wiki for more information.
+
+ExternalPlugins:
+  EconomyAPI: false
+  SimpleAuth: false
 
 #Here you can edit the sound ID and who can hear it for each event.
 #Sounds IDs can be found in soundsIDs.txt .
-#At the hearby : 1 = player who called the event. 2 = Everyone except the player. 3 = Everyone in the world.
+#At the heardby : 1 = Event caller (single player). 2 = Everyone except the caller. 3 = All the players
 
 LoginEvent:
-    sound: 0
-    hearby: 3
+  sound: 0
+  heardby: 3
 JoinEvent:
-    sound: 2
-    hearby: 3
+  sound: 2
+  heardby: 3
 QuitEvent:
-    sound: 2
-    hearby: 3
+  sound: 2
+  heardby: 3
 ChatEvent:
-    sound: 10
-    hearby: 2
+  sound: 10
+  heardby: 2
 DeathEvent:
-    sound: 17
-    hearby: 3
+  sound: 17
+  heardby: 3
 GamemodeEvent:
-    sound: 3
-    hearby: 2
+  sound: 3
+  heardby: 2
 TransferEvent:
-    sound: 19
-    hearby: 2
+  sound: 19
+  heardby: 2
