@@ -1,5 +1,5 @@
 #Don't make any changes in configVersion
-configVersion: 2
+ConfigVersion: 2
 
 #External plugin events are the events called or registered by other plugins
 #Please visit https://github.com/killer549/EventSounds/wiki for more information.

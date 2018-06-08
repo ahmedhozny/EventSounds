@@ -48,7 +48,7 @@ class EventSounds extends PluginBase{
 		if(!file_exists($this->getDataFolder() . "config.yml")){
 			$this->getLogger()->notice("Config.yml file was created successfully."." edit your settings there.");
 			$this->getLogger()->notice("Please visit https://github.com/killer549/EventSounds/wiki for information about this plugin");
-		}elseif(!$this->getConfig()->exists("configVersion") or $this->getConfig()->get("configVersion") !== self::CONFIG_VERSION) {
+		}elseif(!$this->getConfig()->exists("ConfigVersion") or $this->getConfig()->get("ConfigVersion") !== self::CONFIG_VERSION) {
 			$this->getLogger()->error("Your config.yml is outdated! Please delete your current config.yml then reload or restart your server");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 			return false;
