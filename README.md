@@ -17,7 +17,7 @@ A configration file (config.yml) and a helpful file with the available ids (Unti
 
 `configVersion: 2` Don't make any changes here
 
-ExternalPlugins: plugins supported by sound events. Set true in front of the plugin name 
+`ExternalPlugins:` plugins supported by sound events. Set true in front of the plugin name. More plugins will be added soon.
 
 Sounds IDs can be found in soundsIDs.txt. or [here](https://github.com/killer549/EventSounds/wiki/Sounds)
 
@@ -48,4 +48,4 @@ Links:
 
 	You should have received a copy of the GNU Lesser General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+	
