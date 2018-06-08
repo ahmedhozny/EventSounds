@@ -104,7 +104,7 @@ class EventSounds extends PluginBase{
 				unset($players[array_search($player, $players)]);
 				foreach($players as $pos){
 					$pk->position = $pos->asVector3();
-					$this->getServer()->batchPackets([$pos], [$pk]);
+					$pos->batchDataPacket($pk);
 				}
 				break;
 
@@ -112,7 +112,7 @@ class EventSounds extends PluginBase{
 			default:
 				foreach($players as $pos) {
 					$pk->position = $pos->asVector3();
-					$this->getServer()->batchPackets([$pos], [$pk]);
+					$pos->batchDataPacket($pk);
 				}
 		}
 	}
