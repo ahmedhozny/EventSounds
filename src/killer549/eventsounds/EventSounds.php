@@ -28,9 +28,7 @@ class EventSounds extends PluginBase{
 	/** @var Config */
 	public $mainconfig;
 
-	protected const CONFIG_VERSION = 2;
-
-	public const ExternalDIR = "externalplugins/";
+	private const CONFIG_VERSION = 2;
 
 	private const MIN_SOUND = 0, MAX_SOUND = 29;
 
