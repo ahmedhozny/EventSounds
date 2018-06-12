@@ -1,5 +1,5 @@
 name: EventSounds
 author: killer549
-version: 0.4.0-1
+version: 0.4.0
 api: 3.0.0-ALPHA12
 main: killer549\eventsounds\EventSounds
