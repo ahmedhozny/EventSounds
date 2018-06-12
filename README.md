@@ -13,20 +13,17 @@
 A Pocketmine-MP plugin which plays a sound when calling an event.
 
 ## Configuration
-A configration file (config.yml) and a helpful file with the available ids (Until now) will be created automatically when your server enables the plugin. Default settings will be used unless you change them in config.yml
+A configuration file (config.yml) and a helpful file with the available ids (Until now) will be created automatically when your server enables the plugin. Default settings will be used unless you change them in config.yml
 
 `configVersion: 2` Don't make any changes here
 
-`ExternalPlugins:` plugins supported by sound events. Set true in front of the plugin name. More plugins will be added soon.
-
 Sounds IDs can be found in soundsIDs.txt. or [here](https://github.com/killer549/EventSounds/wiki/Sounds)
 
-For more information about sounds, events and supported plugins, check the [wiki](https://github.com/killer549/EventSounds/wiki)
+For more information about sounds and events, see the [wiki](https://github.com/killer549/EventSounds/wiki)
 
 ## TODO
 - Add more sounds
 - Start working on external sounds and music
-- Add support for more plugins
 
 ## Contribution:
 Feel free to contribute if you have ideas or found an issue.
