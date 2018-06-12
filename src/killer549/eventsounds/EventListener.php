@@ -29,40 +29,39 @@ use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerTransferEvent;
 
-class InternalEventListener implements Listener{
-	
+class EventListener implements Listener{
+
 	private $core;
-	
+
 	public function __construct(EventSounds $core){
 		$this->core = $core;
 	}
-	
+
 	public function onLogin(PlayerLoginEvent $ev){
-		$this->core->Manager("LoginEvent", $ev->getPlayer());
+		$this->core->Manager($ev->getPlayer(), PlayerLoginEvent::class);
 	}
 
 	public function onJoin(PlayerJoinEvent $ev){
-		$this->core->Manager("JoinEvent", $ev->getPlayer());
+		$this->core->Manager($ev->getPlayer(), PlayerJoinEvent::class);
 	}
-	
+
 	public function onChat(PlayerChatEvent $ev){
-		$this->core->Manager("ChatEvent", $ev->getPlayer());
+		$this->core->Manager($ev->getPlayer(), PlayerChatEvent::class);
 	}
-	
+
 	public function onDeath(PlayerDeathEvent $ev){
-		$this->core->Manager("DeathEvent", $ev->getPlayer());
+		$this->core->Manager($ev->getPlayer(), PlayerDeathEvent::class);
 	}
-	
+
 	public function onQuit(PlayerQuitEvent $ev){
-		$this->core->Manager("QuitEvent", $ev->getPlayer());
+		$this->core->Manager($ev->getPlayer(), PlayerQuitEvent::class);
 	}
-	
+
 	public function onGamemodeChange(PlayerGameModeChangeEvent $ev){
-		$this->core->Manager("GamemodeEvent", $ev->getPlayer());
+		$this->core->Manager($ev->getPlayer(), PlayerGameModeChangeEvent::class);
 	}
-	
+
 	public function onTransfer(PlayerTransferEvent $ev){
-		$this->core->Manager("TransferEvent", $ev->getPlayer());
+		$this->core->Manager($ev->getPlayer(), PlayerTransferEvent::class);
 	}
-	
 }

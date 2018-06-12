@@ -19,7 +19,6 @@ declare(strict_types = 1);
 
 namespace killer549\eventsounds;
 
-use pocketmine\network\mcpe\protocol\LevelEventPacket;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\utils\Config;
@@ -30,14 +29,17 @@ class EventSounds extends PluginBase{
 	public $mainconfig;
 
 	protected const CONFIG_VERSION = 2;
-	
+
 	public const ExternalDIR = "externalplugins/";
 
 	private const MIN_SOUND = 0, MAX_SOUND = 29;
 
+	/** @var int */
+	public $sound = 0 , $heardby = 0;
+
 	public function onEnable(): void{
 		if($this->loadConfig()){
-			$this->getServer()->getPluginManager()->registerEvents(new InternalEventListener($this), $this);
+			$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 		}
 	}
 
@@ -46,8 +48,7 @@ class EventSounds extends PluginBase{
 	 */
 	private function loadConfig(): bool{
 		if(!file_exists($this->getDataFolder() . "config.yml")){
-			$this->getLogger()->notice("Config.yml file was created successfully."." edit your settings there.");
-			$this->getLogger()->notice("Please visit https://github.com/killer549/EventSounds/wiki for information about this plugin");
+			$this->getLogger()->notice("Config.yml file was created successfully. Edit your settings there.");
 		}elseif(!$this->getConfig()->exists("ConfigVersion") or $this->getConfig()->get("ConfigVersion") !== self::CONFIG_VERSION) {
 			$this->getLogger()->error("Your config.yml is outdated! Please delete your current config.yml then reload or restart your server");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
@@ -58,7 +59,6 @@ class EventSounds extends PluginBase{
 		$this->saveDefaultConfig();
 		$this->saveResource("soundsIDs.txt");
 		$this->mainconfig = $this->getConfig()->getAll();
-		new RegisterExternalPlugins($this);
 
 		return true;
 	}
@@ -66,54 +66,23 @@ class EventSounds extends PluginBase{
 	/**
 	 * Receives information from config depending on the caller and distributes the sound.
 	 *
-	 * @param string $event Used to search in configuration files only.
 	 * @param Player $player
-	 * @param string $plugin if null, the method should be called by core (Pocketmine) event.
+	 * @param string|null $event Used to search in configuration files only. Should be null if the event is external
+	 * @throws
 	 */
-	public function Manager(string $event, Player $player, string $plugin = null): void{
-		if($plugin !== null){
-			$extcfg = (new Config($this->getDataFolder(). self::ExternalDIR. $plugin. ".yml", Config::YAML))->getAll();
-			$soundID = $extcfg[$event]["sound"];
-			$heardby = $extcfg[$event]["heardby"];
-		}else{
-			$soundID = $this->mainconfig[$event]["sound"];
-			$heardby = $this->mainconfig[$event]["heardby"];
-		}
+	public function Manager(Player $player, ?string $event): void{
+			if($event !== null){
+				$event = (new \ReflectionClass($event))->getShortName();
+				$this->sound = $this->mainconfig[$event]["sound"];
+				$this->heardby = $this->mainconfig[$event]["heardby"];
+			}
 
-		if($soundID <= self::MIN_SOUND or $soundID >= self::MAX_SOUND){
-			return;
-		}
+			if($this->sound <= self::MIN_SOUND or $this->sound >= self::MAX_SOUND){
+				return;
+			}
 
-		$sound = new Sounds($soundID);
+			$sound = new SoundHandler($this->sound);
 
-		$this->soundPlayer($sound->sound, $heardby, $player);
-	}
-
-	private function soundPlayer(int $sound, $heardby, Player $player): void{
-		$pk = new LevelEventPacket();
-		$pk->evid = $sound;
-		$pk->data = 0;
-		$players = $this->getServer()->getOnlinePlayers();
-		switch($heardby ?? 3){
-			case 1:
-				$pk->position = $player->asVector3();
-				$player->batchDataPacket($pk);
-				break;
-
-			case 2:
-				unset($players[array_search($player, $players)]);
-				foreach($players as $pos){
-					$pk->position = $pos->asVector3();
-					$pos->batchDataPacket($pk);
-				}
-				break;
-
-			case 3:
-			default:
-				foreach($players as $pos) {
-					$pk->position = $pos->asVector3();
-					$pos->batchDataPacket($pk);
-				}
-		}
+			new SoundPlayer($this, $sound->sound, $this->heardby, $player);
 	}
 }

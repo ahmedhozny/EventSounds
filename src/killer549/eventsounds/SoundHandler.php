@@ -21,19 +21,20 @@ namespace killer549\eventsounds;
 
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
 
-class Sounds{
+class SoundHandler{
 
+	/** @var int */
 	public $sound;
 
 	public function __construct(int $sound){
-		$this->soundsListener($sound);
+		$this->soundHandler($sound);
 	}
 
 	/**
 	 * @param int $sound
 	 * @return int
 	 */
-	private function soundsListener(int $sound): int{
+	private function soundHandler(int $sound): int{
 		if($sound == "1") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_BREAK;
 		elseif($sound == "2") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_FALL;
 		elseif($sound == "3") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_USE;

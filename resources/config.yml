@@ -1,35 +1,28 @@
-#Don't make any changes in configVersion
+# Don't make any changes in configVersion because it is used internally
 ConfigVersion: 2
 
-#External plugin events are the events called or registered by other plugins
-#Please visit https://github.com/killer549/EventSounds/wiki for more information.
+# Here you can edit the sound ID and who can hear it for each event.
+# Sound IDs can be found in soundsIDs.txt .
+# At the heardby : 1 = Event caller (single player). 2 = Everyone except the caller. 3 = All the players
 
-ExternalPlugins:
-  EconomyAPI: false
-  SimpleAuth: false
-
-#Here you can edit the sound ID and who can hear it for each event.
-#Sounds IDs can be found in soundsIDs.txt .
-#At the heardby : 1 = Event caller (single player). 2 = Everyone except the caller. 3 = All the players
-
-LoginEvent:
+PlayerLoginEvent:
   sound: 0
   heardby: 3
-JoinEvent:
+PlayerJoinEvent:
   sound: 2
   heardby: 3
-QuitEvent:
+PlayerQuitEvent:
   sound: 2
   heardby: 3
-ChatEvent:
+PlayerChatEvent:
   sound: 10
   heardby: 2
-DeathEvent:
+PlayerDeathEvent:
   sound: 17
   heardby: 3
-GamemodeEvent:
+PlayerGameModeChangeEvent:
   sound: 3
   heardby: 2
-TransferEvent:
+PlayerTransferEvent:
   sound: 19
   heardby: 2
