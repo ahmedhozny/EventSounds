@@ -37,7 +37,7 @@ class SoundPlayer{
 					break;
 
 				case 2:
-					unset($players[array_search($player, $players)]);
+					unset($players[$player->getRawUniqueId()]);
 					foreach($players as $pos){
 						$pk->position = $pos->asVector3();
 						$pos->batchDataPacket($pk);

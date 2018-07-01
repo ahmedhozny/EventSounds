@@ -45,17 +45,25 @@ class EventSounds extends PluginBase{
 	 * @return bool
 	 */
 	private function loadConfig(): bool{
-		if(!file_exists($this->getDataFolder() . "config.yml")){
-			$this->getLogger()->notice("Config.yml file was created successfully. Edit your settings there.");
-		}elseif(!$this->getConfig()->exists("ConfigVersion") or $this->getConfig()->get("ConfigVersion") !== self::CONFIG_VERSION) {
-			$this->getLogger()->error("Your config.yml is outdated! Please delete your current config.yml then reload or restart your server");
+		@mkdir($this->getDataFolder());
+
+		if(!file_exists($this->getDataFolder() . "config.yml")) {
+			$this->getLogger()->notice("config.yml file was created successfully. Edit your settings there.");
+		}
+
+		$this->saveDefaultConfig();
+		$this->saveResource("soundsIDs.txt");
+
+		$config = new Config($this->getDataFolder(). "config.yml", Config::YAML);
+
+		$currentversion = $config->get("ConfigVersion", null);
+
+		if($currentversion === null or $currentversion !== self::CONFIG_VERSION) {
+			$this->getLogger()->error("config.yml is outdated! Please delete the current config.yml then reload or restart your server");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 			return false;
 		}
 
-		@mkdir($this->getDataFolder());
-		$this->saveDefaultConfig();
-		$this->saveResource("soundsIDs.txt");
 		$this->mainconfig = $this->getConfig()->getAll();
 
 		return true;
