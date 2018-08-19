@@ -35,35 +35,98 @@ class SoundHandler{
 	 * @return int
 	 */
 	private function soundHandler(int $sound): int{
-		if($sound == "1") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_BREAK;
-		elseif($sound == "2") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_FALL;
-		elseif($sound == "3") $sound = LevelEventPacket::EVENT_SOUND_ANVIL_USE;
-		elseif($sound == "4") $sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_BREAK;
-		elseif($sound == "5") $sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_FALL;
-		elseif($sound == "6") $sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_HIT;
-		elseif($sound == "7") $sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_PLACE;
-		elseif($sound == "8") $sound = LevelEventPacket::EVENT_SOUND_BLAZE_SHOOT;
-		elseif($sound == "9") $sound = LevelEventPacket::EVENT_SOUND_CAMERA;
-		elseif($sound == "10") $sound = LevelEventPacket::EVENT_SOUND_CLICK;
-		elseif($sound == "11") $sound = LevelEventPacket::EVENT_SOUND_CLICK_FAIL;
-		elseif($sound == "12") $sound = LevelEventPacket::EVENT_SOUND_DOOR;
-		elseif($sound == "13") $sound = LevelEventPacket::EVENT_SOUND_DOOR_BUMP;
-		elseif($sound == "14") $sound = LevelEventPacket::EVENT_SOUND_DOOR_CRASH;
-		elseif($sound == "15") $sound = LevelEventPacket::EVENT_SOUND_ENDERMAN_TELEPORT;
-		elseif($sound == "16") $sound = LevelEventPacket::EVENT_SOUND_FIZZ;
-		elseif($sound == "17") $sound = LevelEventPacket::EVENT_SOUND_GHAST;
-		elseif($sound == "18") $sound = LevelEventPacket::EVENT_SOUND_GHAST_SHOOT;
-		elseif($sound == "19") $sound = LevelEventPacket::EVENT_SOUND_IGNITE;
-		elseif($sound == "20") $sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_ADD_ITEM;
-		elseif($sound == "21") $sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_PLACE;
-		elseif($sound == "22") $sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_REMOVE;
-		elseif($sound == "23") $sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_REMOVE_ITEM;
-		elseif($sound == "24") $sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_ROTATE_ITEM;
-		elseif($sound == "25") $sound = LevelEventPacket::EVENT_SOUND_ORB;
-		elseif($sound == "26") $sound = LevelEventPacket::EVENT_SOUND_POP;
-		elseif($sound == "27") $sound = LevelEventPacket::EVENT_SOUND_PORTAL;
-		elseif($sound == "28") $sound = LevelEventPacket::EVENT_SOUND_SHOOT;
-		elseif($sound == "29") $sound = LevelEventPacket::EVENT_SOUND_TOTEM;
+		switch($sound) {
+	    	    case 1:
+			$sound = LevelEventPacket::EVENT_SOUND_ANVIL_BREAK;
+		    break;
+		    case 2:
+			$sound = LevelEventPacket::EVENT_SOUND_ANVIL_FALL;
+		    break;
+		    case 3:
+			$sound = LevelEventPacket::EVENT_SOUND_ANVIL_USE;
+		    break;
+		    case 4:
+			$sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_BREAK;
+		    break;
+		    case 5:
+			$sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_FALL;
+		    break;
+		    case 6:
+			$sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_HIT;
+		    break;
+		    case 7:
+			$sound = LevelEventPacket::EVENT_SOUND_ARMOR_STAND_PLACE;
+		    break;
+		    case 8:
+			$sound = LevelEventPacket::EVENT_SOUND_BLAZE_SHOOT;
+		    break;
+		    case 9:
+			$sound = LevelEventPacket::EVENT_SOUND_CAMERA;
+		    break;
+		    case 10:
+			$sound = LevelEventPacket::EVENT_SOUND_CLICK;
+		    break;
+		    case 11:
+			$sound = LevelEventPacket::EVENT_SOUND_CLICK_FAIL;
+		    break;
+		    case 12:
+			$sound = LevelEventPacket::EVENT_SOUND_DOOR;
+		    break;
+		    case 13:
+			$sound = LevelEventPacket::EVENT_SOUND_DOOR_BUMP;
+		    break;
+		    case 14:
+			$sound = LevelEventPacket::EVENT_SOUND_DOOR_CRASH;
+		    break;
+		    case 15:
+			$sound = LevelEventPacket::EVENT_SOUND_ENDERMAN_TELEPORT;
+		    break;
+		    case 16:
+			$sound = LevelEventPacket::EVENT_SOUND_FIZZ;
+		    break;
+		    case 17:
+			$sound = LevelEventPacket::EVENT_SOUND_GHAST;
+		    break;
+		    case 18:
+			$sound = LevelEventPacket::EVENT_SOUND_GHAST_SHOOT;
+		    break;
+		    case 19:
+			$sound = LevelEventPacket::EVENT_SOUND_IGNITE;
+		    break;
+		    case 20:
+			$sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_ADD_ITEM;
+		    break;
+		    case 21:
+			$sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_PLACE;
+		    break;
+		    case 22:
+			$sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_REMOVE;
+		    break;
+		    case 23:
+			$sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_REMOVE_ITEM;
+		    break;
+		    case 24:
+			$sound = LevelEventPacket::EVENT_SOUND_ITEMFRAME_ROTATE_ITEM;
+		    break;
+		    case 25:
+			$sound = LevelEventPacket::EVENT_SOUND_ORB;
+		    break;
+		    case 26:
+			$sound = LevelEventPacket::EVENT_SOUND_POP;
+		    break;
+		    case 27:
+			$sound = LevelEventPacket::EVENT_SOUND_PORTAL;
+		    break;
+		    case 28:
+			$sound = LevelEventPacket::EVENT_SOUND_SHOOT;
+		    break;
+		    case 29:
+			$sound = LevelEventPacket::EVENT_SOUND_TOTEM;
+		    break;
+		    default:
+			$sound = LevelEventPacket::EVENT_SOUND_ANVIL_BREAK;
+		    break;
+		}
 		return $this->sound = $sound;
 	}
 } 
